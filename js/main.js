@@ -29,6 +29,8 @@
     var introSig = intro.querySelector('.intro-sig');
     var brand = document.querySelector('.brand img');
     introSvg = SIG.mount(introSig, { label: 'Anthony Elanga' });
+    var brandBox = intro.querySelector('.intro-brand');
+    var brandSvg = (brandBox && window.ELANGA_BRAND) ? SIG.mount(brandBox, { data: window.ELANGA_BRAND, label: 'PrécisPasPressé' }) : null;
 
     var endIntro = function () {
       root.classList.remove('intro-on');
@@ -46,6 +48,7 @@
       if (leaving) return;
       leaving = true;
       SIG.reveal(introSvg);
+      if (brandSvg) SIG.reveal(brandSvg);
       intro.classList.add('leaving');
       if (fast) { endIntro(); return; }
       var from = introSig.getBoundingClientRect();
@@ -64,15 +67,19 @@
       root.classList.add('intro-on');
       body.classList.remove('is-ready');
       toTop();
-      SIG.write(introSvg, { lead: 250, speed: 1.45 }).then(function () {
-        if (root.classList.contains('intro-on')) setTimeout(function () { leave(false); }, 220);
+      /* the brand starts while the signature finishes, so the whole intro stays close to 3 s */
+      Promise.all([
+        SIG.write(introSvg, { lead: 250, speed: 1.45 }),
+        brandSvg ? SIG.write(brandSvg, { lead: 1250, speed: 2.1 }) : null
+      ]).then(function () {
+        if (root.classList.contains('intro-on')) setTimeout(function () { leave(false); }, 260);
       });
     };
 
     document.getElementById('intro-skip').addEventListener('click', function () { leave(true); });
-    if (root.classList.contains('intro-on')) playIntro(); else { SIG.reveal(introSvg); ready(); }
+    if (root.classList.contains('intro-on')) playIntro(); else { SIG.reveal(introSvg); if (brandSvg) SIG.reveal(brandSvg); ready(); }
     document.querySelectorAll('[data-replay-intro]').forEach(function (b) {
-      b.addEventListener('click', function () { store(false); SIG.stop(introSvg); playIntro(); });
+      b.addEventListener('click', function () { store(false); SIG.stop(introSvg); if (brandSvg) SIG.stop(brandSvg); playIntro(); });
     });
   } else {
     ready();

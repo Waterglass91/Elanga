@@ -63,7 +63,10 @@ def head(title, desc, css, intro=False, body_class=''):
 INTRO = '''
 <!-- ===== 01 Arrival : intro ===== -->
 <div class="intro" id="intro" aria-hidden="true">
-  <div class="intro-sig"></div>
+  <div class="intro-stack">
+    <div class="intro-sig"></div>
+    <div class="intro-brand"></div>
+  </div>
   <button class="intro-skip" id="intro-skip" type="button">Passer l'intro</button>
 </div>
 '''
@@ -104,7 +107,7 @@ def chrome(current):
 '''
 
 
-def footer(replay):
+def footer(replay, scripts=''):
     extra = '<button type="button" data-replay-intro>Revoir l\'intro</button>' if replay else '<a href="index.html">Accueil</a>'
     return f'''
 <footer class="site-footer">
@@ -136,7 +139,7 @@ def footer(replay):
 
 <div class="grain" aria-hidden="true"></div>
 
-<script src="data/signature.js"></script>
+<script src="data/signature.js"></script>{scripts}
 <script src="js/signature.js"></script>
 <script src="js/main.js"></script>
 </body>
@@ -682,7 +685,7 @@ DESC_SUFFIX = ' Concept éditorial indépendant.'
 pages = {
     'index.html': head("Anthony Elanga — The Elanga Experience (concept éditorial)",
                        "The Elanga Experience : concept éditorial indépendant autour du parcours d'Anthony Elanga, de Malmö aux plus grandes scènes d'Europe.",
-                       [], intro=True, body_class='page-home') + INTRO + chrome('index.html') + HOME + footer(True),
+                       [], intro=True, body_class='page-home') + INTRO + chrome('index.html') + HOME + footer(True, '\n<script src="data/brand.js"></script>'),
     'journey.html': head('The Journey — Anthony Elanga (concept éditorial)',
                          "Le parcours d'Anthony Elanga en sept chapitres, de Malmö à la Coupe du monde 2026." + DESC_SUFFIX,
                          ['pages'], body_class='page-journey') + chrome('journey.html') + JOURNEY + footer(False),

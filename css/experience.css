@@ -8,7 +8,12 @@
 html.intro-on .intro{display:grid}
 .intro::before{content:"";position:absolute;inset:-20%;pointer-events:none;
   background:radial-gradient(50% 40% at 50% 50%,rgba(242,240,234,.06),transparent 70%);transition:opacity var(--t-med)}
+.intro-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(14px,3.2vh,36px)}
 .intro-sig{position:relative;width:min(80vw,1040px);transform-origin:0 0}
+.intro-brand{width:min(60vw,520px);transition:opacity 400ms ease}
+.intro.leaving .intro-brand{opacity:0}
+/* the header logo stays hidden until the flying signature lands on it */
+html.intro-on .brand{opacity:0}
 .intro-skip{position:absolute;right:var(--pad);bottom:28px;padding:8px 0;font-size:var(--fs-small);color:var(--titanium);
   transition:color var(--t-fast)}
 .intro-skip:hover{color:var(--bone)}
