@@ -29,7 +29,7 @@ Ce qui manque ou doit être validé avant toute mise en ligne publique. Mis à j
 
 | Texte | Source | Statut |
 |---|---|---|
-| « Speed is a gift. Progress is a choice. » | Création éditoriale | ✅ Signalé comme tel sur la page |
+| « Speed is a gift. Progress is a choice. » | Création éditoriale | ✅ Mention retirée à la demande du client (17/11/2026) |
 | Paragraphe Statement (séances à l'aube) | Portrait biographique fourni | ⚠️ À vérifier |
 | Person · Style | Formulation éditoriale | ⚠️ À valider (aucune déclaration publique sourcée) |
 | Person · Mindset, Ambitions | Interview Newcastle, juillet 2026 (via portrait fourni) | ⚠️ Source à citer / vérifier |
