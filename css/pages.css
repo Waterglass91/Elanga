@@ -149,3 +149,61 @@ html:not(.js) .fig img{transform:none}
   .moment-list .st{justify-self:start}
 }
 .page-person .site-footer{background:var(--obsidian);border-top:0}
+
+/* ---------------- Partnerships ---------------- */
+.demo-note{margin-top:24px;max-width:62ch;padding:14px 18px;border:1px dashed var(--hair);font-size:14px;color:var(--titanium)}
+.todo{display:inline-block;vertical-align:middle;margin-left:12px;padding:3px 10px;border:1px dashed var(--titanium);border-radius:999px;
+  font-family:var(--font-body);font-size:12px;letter-spacing:.02em;text-transform:none;color:var(--titanium);line-height:1.4}
+.pt-sec{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gutter);padding:clamp(64px,10vh,120px) 0;border-top:1px solid var(--hair)}
+.pt-sec > *{grid-column:5/13}
+.pt-sec > .pt-head{grid-column:1/5;align-self:start}
+.pt-head h2{margin-top:16px;font-size:clamp(44px,4.8vw,80px)}
+.pt-lede{margin-top:18px;color:var(--titanium);max-width:36ch}
+.pillars3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gutter)}
+.pillar{padding-top:18px;border-top:1px solid var(--bone)}
+.pillar .k{font-size:var(--fs-small);color:var(--titanium)}
+.pillar h3{margin-top:8px;font-size:clamp(34px,3.2vw,52px)}
+.pillar p{margin-top:12px;color:rgba(242,240,234,.82);font-size:15px}
+.facts{border-top:1px solid var(--hair)}
+.fact-row{display:grid;grid-template-columns:200px 1fr;gap:var(--gutter);padding:14px 0;border-bottom:1px solid var(--hair)}
+.slot-label{font-size:var(--fs-small);color:var(--titanium)}
+.pt-src{margin-top:12px}
+.pt-sub{margin-top:clamp(40px,6vh,64px);font-size:18px;font-weight:500}
+.slots{margin-top:16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.slot{display:flex;flex-direction:column;gap:6px;padding:18px;border:1px dashed var(--hair)}
+.slot-value{font-family:var(--font-display);font-size:40px;line-height:1;color:var(--titanium)}
+.slot-note{font-size:13px;color:var(--titanium)}
+.formats{list-style:none;counter-reset:f;border-top:1px solid var(--hair)}
+.formats li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:var(--gutter);align-items:baseline;padding:22px 0;border-bottom:1px solid var(--hair)}
+.formats strong{font-weight:400;font-size:clamp(30px,2.8vw,44px)}
+.formats p{color:rgba(242,240,234,.82)}
+.kit{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:start}
+.kit-cover{aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:space-between;padding:24px;background:var(--carbon);border:1px solid var(--hair)}
+.kit-cover .kit-sig{width:70%;height:auto}
+.kit-cover strong{font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:clamp(40px,4vw,64px);line-height:.9}
+.kit-cover span{font-size:var(--fs-small);color:var(--titanium)}
+.kit-body > p{color:rgba(242,240,234,.86);max-width:46ch}
+.kit-list{margin:20px 0 28px;padding-left:18px;color:rgba(242,240,234,.82)}
+.kit-list li + li{margin-top:6px}
+.btn[disabled]{background:var(--carbon);color:var(--titanium);cursor:not-allowed}
+.kit-body .meta{margin-top:12px}
+.pt-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px var(--gutter)}
+.field{display:flex;flex-direction:column;gap:8px}
+.field:nth-child(5){grid-column:1/-1}
+.field label{font-size:14px}
+.field input,.field select,.field textarea{width:100%;min-height:48px;padding:12px 14px;border:1px solid var(--hair);border-radius:0;
+  background:var(--carbon);color:var(--bone);font:inherit;transition:border-color var(--t-fast)}
+.field textarea{resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--volt)}
+.field [aria-invalid="true"]{border-color:#ff8a7a}
+.err{min-height:1em;font-size:13px;color:#ff8a7a}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+.form-status{grid-column:1/-1;font-size:15px}
+.form-status:not(:empty){padding:14px 18px;border-left:2px solid var(--volt);background:var(--carbon)}
+
+@media (max-width:900px){
+  .pt-sec > *,.pt-sec > .pt-head{grid-column:1/-1}
+  .pillars3,.slots,.kit,.pt-form{grid-template-columns:1fr}
+  .fact-row,.formats li{grid-template-columns:1fr;gap:4px}
+  .kit-cover{max-width:320px}
+}

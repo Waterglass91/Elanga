@@ -35,7 +35,8 @@ Ce qui manque ou doit être validé avant toute mise en ligne publique. Mis à j
 
 ## Fonctionnel
 
-- Partnerships : page prévue en M4, lien marqué « bientôt » dans le menu
+- Partnerships : chiffres d'audience, formats, media kit (PDF) et contact du management à fournir et valider
+- Formulaire de contact : démonstration sans envoi ; brancher un service (ou une adresse) une fois le contact approuvé
 - Motion : pas de filtres (une seule vidéo disponible), à ajouter quand la médiathèque le justifiera
 - Les pages sont générées par `tools/build_pages.py` (en-tête, menu et pied de page partagés)
 - Contact presse / partenariats : aucune adresse tant qu'elle n'est pas approuvée

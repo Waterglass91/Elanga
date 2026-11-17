@@ -19,7 +19,9 @@ IMG = {  # file: (width, height)
 def img(name, alt, eager=False):
     w, h = IMG[name]
     load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
-    return f'<img src="media/{name}" width="{w}" height="{h}" alt="{alt}" {load}>'
+    webp = name.rsplit('.', 1)[0] + '.webp'
+    return (f'<picture><source type="image/webp" srcset="media/{webp}">'
+            f'<img src="media/{name}" width="{w}" height="{h}" alt="{alt}" {load}></picture>')
 
 
 def fig(name, alt, caption, cls='fig portrait'):
@@ -66,7 +68,7 @@ INTRO = '''
 </div>
 '''
 
-PAGES = [('index.html', 'Experience'), ('journey.html', 'The Journey'), ('person.html', 'The Person'), ('motion.html', 'The Motion')]
+PAGES = [('index.html', 'Experience'), ('journey.html', 'The Journey'), ('person.html', 'The Person'), ('motion.html', 'The Motion'), ('partnerships.html', 'Partnerships')]
 
 
 def chrome(current):
@@ -95,7 +97,6 @@ def chrome(current):
 <nav class="menu" id="menu" aria-label="Menu" inert>
   <div class="wrap">
     <ul>{menu}
-      <li><span class="as-link is-soon" aria-disabled="true">Partnerships<span class="soon">bientôt</span></span></li>
     </ul>
     <p class="menu-foot">Concept éditorial indépendant. Always forward.</p>
   </div>
@@ -240,7 +241,7 @@ HOME = f'''
 
   <!-- ===== 04 Journey ===== -->
   <section class="journey" id="journey" aria-labelledby="journey-title">
-    <div class="preview" aria-hidden="true"><img alt="" src="media/bw-56.jpg"></div>
+    <div class="preview" aria-hidden="true"><img alt=""></div>
     <div class="wrap">
       <div class="journey-top">
         <div>
@@ -304,6 +305,7 @@ HOME = f'''
           <a href="journey.html">The Journey</a>
           <a href="person.html">The Person</a>
           <a href="motion.html">The Motion</a>
+          <a href="partnerships.html">Partnerships</a>
           <a href="#top">Retour en haut</a>
         </nav>
       </div>
@@ -562,6 +564,121 @@ MOTION = f'''
 </main>
 '''
 
+# ------------------------------------------------------------------ PARTNERSHIPS
+TODO = '<span class="todo">À valider</span>'
+
+
+def slot(label, note):
+    return f'<div class="slot"><span class="slot-label">{label}</span><span class="slot-value" aria-label="Donnée non renseignée">—</span><span class="slot-note">{note}</span></div>'
+
+
+def field(fid, label, kind='text', required=True, extra=''):
+    req = ' required aria-required="true"' if required else ''
+    star = '' if not required else ' <span aria-hidden="true">*</span>'
+    if kind == 'textarea':
+        ctrl = f'<textarea id="{fid}" name="{fid}" rows="5"{req} aria-describedby="{fid}-err"{extra}></textarea>'
+    elif kind == 'select':
+        ctrl = (f'<select id="{fid}" name="{fid}"{req} aria-describedby="{fid}-err"><option value="">Choisir…</option>'
+                '<option>Partenariat de marque</option><option>Campagne ou contenu</option><option>Événement ou apparition</option>'
+                '<option>Presse ou interview</option><option>Autre</option></select>')
+    else:
+        ctrl = f'<input id="{fid}" name="{fid}" type="{kind}"{req} aria-describedby="{fid}-err"{extra}>'
+    return f'<div class="field"><label for="{fid}">{label}{star}</label>{ctrl}<span class="err" id="{fid}-err"></span></div>'
+
+
+PARTNERS = f"""
+<main id="main" class="page">
+  <div class="wrap">
+    <header class="page-head">
+      <p class="section-label">Partnerships</p>
+      <h1 class="display reveal">{lines('Built to', 'move forward.')}</h1>
+      <p class="page-lede">Un athlète international qui construit sa propre marque, à la croisée de la performance, du mouvement et de l'élégance.</p>
+      <p class="demo-note" role="note">Page de démonstration. Les chiffres, formats et contacts seront complétés et validés avec Anthony Elanga ou ses représentants avant toute publication.</p>
+    </header>
+
+    <section class="pt-sec" aria-labelledby="pt-pillars">
+      <div class="pt-head"><p class="section-label">Positionnement</p><h2 class="display" id="pt-pillars">Three pillars</h2></div>
+      <div class="pillars3">
+        <article class="pillar fade"><span class="k">01</span><h3 class="display">Luxury</h3><p>Précision, retenue, exigence du détail. Une image sobre et maîtrisée, loin du bruit.</p></article>
+        <article class="pillar fade"><span class="k">02</span><h3 class="display">Motion</h3><p>Vitesse, agilité, impact. Le mouvement comme langage, sur le terrain et en dehors.</p></article>
+        <article class="pillar fade"><span class="k">03</span><h3 class="display">Identity</h3><p>Des racines à Malmö, une famille de footballeurs, un parcours entre trois pays.</p></article>
+      </div>
+    </section>
+
+    <section class="pt-sec" aria-labelledby="pt-facts">
+      <div class="pt-head"><p class="section-label">Repères</p><h2 class="display" id="pt-facts">At a glance</h2></div>
+      <div class="facts">
+        <div class="fact-row"><span class="slot-label">Poste</span><span>Ailier</span></div>
+        <div class="fact-row"><span class="slot-label">Sélection</span><span>Suède, depuis mars 2022</span></div>
+        <div class="fact-row"><span class="slot-label">Clubs</span><span>Manchester United, Nottingham Forest, Newcastle United</span></div>
+        <div class="fact-row"><span class="slot-label">Grandes compétitions</span><span>Premier League, Ligue des champions, Coupe du monde 2026</span></div>
+      </div>
+      <p class="meta pt-src">Source : portrait biographique fourni (novembre 2026), à vérifier.</p>
+      <h3 class="pt-sub">Audience et chiffres {TODO}</h3>
+      <div class="slots">
+        {slot('Audience réseaux sociaux', 'À fournir par le management, avec date et source')}
+        {slot('Engagement moyen', 'Donnée certifiée requise')}
+        {slot('Répartition par pays', 'Donnée certifiée requise')}
+        {slot('Couverture médias', 'Revue de presse à constituer')}
+      </div>
+      <p class="meta pt-src">Aucun chiffre n'est affiché tant qu'il n'est pas sourcé, daté et vérifié.</p>
+    </section>
+
+    <section class="pt-sec" aria-labelledby="pt-formats">
+      <div class="pt-head"><p class="section-label">Collaborations</p><h2 class="display" id="pt-formats">Formats {TODO}</h2></div>
+      <ol class="formats">
+        <li class="fade"><strong class="display">Ambassadeur</strong><p>Partenariat de marque sur la durée, construit autour des trois piliers.</p></li>
+        <li class="fade"><strong class="display">Campagnes</strong><p>Contenus éditoriaux, photo et vidéo, dans la direction artistique The Elanga Experience.</p></li>
+        <li class="fade"><strong class="display">Événements</strong><p>Apparitions, lancements, rencontres, selon le calendrier sportif.</p></li>
+        <li class="fade"><strong class="display">Communauté</strong><p>Projets liés à la jeunesse et au football de formation, à définir.</p></li>
+      </ol>
+      <p class="meta pt-src">Références de partenaires : aucune n'est affichée sans autorisation écrite. Aucun logo de marque n'est utilisé.</p>
+    </section>
+
+    <section class="pt-sec kit-sec" aria-labelledby="pt-kit">
+      <div class="pt-head"><p class="section-label">Media kit</p><h2 class="display" id="pt-kit">Media kit</h2></div>
+      <div class="kit">
+        <div class="kit-cover" aria-hidden="true"><img class="kit-sig" src="assets/signature-blanc.svg" width="1978" height="660" alt=""><strong>Media kit</strong><span>2026 – 2027</span></div>
+        <div class="kit-body">
+          <p>Le media kit réunira tout ce qu'une marque ou un média doit savoir, dans un seul document.</p>
+          <ul class="kit-list">
+            <li>Biographie courte et longue, validées</li>
+            <li>Sélection de photos HD sous licence</li>
+            <li>Chiffres d'audience certifiés et datés</li>
+            <li>Formats de collaboration et conditions</li>
+            <li>Contact du management</li>
+          </ul>
+          <button class="btn btn-primary" type="button" disabled aria-describedby="kit-state">Télécharger le media kit (PDF)</button>
+          <p class="meta" id="kit-state">En préparation : disponible après validation du contenu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-sec" id="contact" aria-labelledby="pt-contact">
+      <div class="pt-head"><p class="section-label">Contact</p><h2 class="display" id="pt-contact">Work together</h2>
+        <p class="pt-lede">Le contact du management sera ajouté après validation. En attendant, ce formulaire montre le parcours prévu : il n'envoie rien.</p></div>
+      <form class="pt-form" data-demo-form novalidate>
+        {field('nom', 'Nom', extra=' autocomplete="name"')}
+        {field('organisation', 'Organisation', extra=' autocomplete="organization"')}
+        {field('email', 'E-mail', 'email', extra=' autocomplete="email"')}
+        {field('projet', 'Type de projet', 'select')}
+        {field('message', 'Message', 'textarea')}
+        <div class="form-foot">
+          <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+          <p class="meta">Formulaire de démonstration · aucune donnée n'est transmise ni conservée.</p>
+        </div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <div class="next-pages">
+      {next_card('journey.html', 'Le parcours', 'The Journey')}
+      {next_card('index.html', "Retour à", 'Experience')}
+    </div>
+  </div>
+</main>
+"""
+
 DESC_SUFFIX = ' Concept éditorial indépendant.'
 pages = {
     'index.html': head("Anthony Elanga — The Elanga Experience (concept éditorial)",
@@ -573,6 +690,9 @@ pages = {
     'person.html': head('The Person — Anthony Elanga (concept éditorial)',
                         "Racines, mindset, style et héritage : l'homme derrière l'ailier." + DESC_SUFFIX,
                         ['pages'], body_class='page-person') + chrome('person.html') + PERSON + footer(False),
+    'partnerships.html': head('Partnerships — Anthony Elanga (concept éditorial)',
+                              'Positionnement, formats de collaboration et media kit (démonstration).' + DESC_SUFFIX,
+                              ['pages'], body_class='page-partners') + chrome('partnerships.html') + PARTNERS + footer(False),
     'motion.html': head('The Motion — Anthony Elanga (concept éditorial)',
                         'Le film, les images et les grands soirs de la carrière d\'Anthony Elanga.' + DESC_SUFFIX,
                         ['pages'], body_class='page-motion') + chrome('motion.html') + MOTION + footer(False),

@@ -237,6 +237,39 @@
     fv.addEventListener('click', load, { once: true });
   }
 
+  /* ---------------- Partnerships : demo form (validates, never sends) ---------------- */
+  var form = document.querySelector('[data-demo-form]');
+  if (form) {
+    var status = form.querySelector('.form-status');
+    var messages = {
+      valueMissing: 'Ce champ est obligatoire.',
+      typeMismatch: 'Indiquez une adresse e-mail valide, par exemple nom@domaine.com.'
+    };
+    var check = function (el) {
+      var err = document.getElementById(el.id + '-err');
+      var v = el.validity, msg = '';
+      if (!v.valid) msg = v.valueMissing ? messages.valueMissing : (v.typeMismatch ? messages.typeMismatch : el.validationMessage);
+      el.setAttribute('aria-invalid', String(!v.valid));
+      if (err) err.textContent = msg;
+      return v.valid;
+    };
+    form.querySelectorAll('input,select,textarea').forEach(function (el) {
+      el.addEventListener('blur', function () { if (el.value) check(el); });
+      el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') check(el); });
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fields = Array.prototype.slice.call(form.querySelectorAll('input,select,textarea'));
+      var invalid = fields.filter(function (el) { return !check(el); });
+      if (invalid.length) {
+        status.textContent = invalid.length === 1 ? '1 champ à corriger.' : invalid.length + ' champs à corriger.';
+        invalid[0].focus();
+        return;
+      }
+      status.textContent = 'Demande prête. Formulaire de démonstration : rien n’a été envoyé. Le contact du management sera ajouté après validation.';
+    });
+  }
+
   /* ---------------- Closing signature ---------------- */
   var closing = document.querySelector('[data-signature="closing"]');
   if (closing) {
