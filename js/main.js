@@ -13,7 +13,7 @@
   var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   function store(set) {
-    try { if (set === undefined) return localStorage.getItem(STORE_KEY); if (set) localStorage.setItem(STORE_KEY, '1'); else localStorage.removeItem(STORE_KEY); }
+    try { if (set === undefined) return sessionStorage.getItem(STORE_KEY); if (set) sessionStorage.setItem(STORE_KEY, '1'); else sessionStorage.removeItem(STORE_KEY); }
     catch (e) { return null; }
   }
   function toTop() { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
