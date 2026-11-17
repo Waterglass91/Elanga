@@ -1,12 +1,12 @@
 /* ==========================================================
-   Signature engine — writes the handwritten "Anthony Elanga"
+   Writing engine — writes a handwritten mark (signature, brand)
    by revealing the original outline through a mask of
    pen strokes (data/signature.js, from tools/skeleton.py).
    ========================================================== */
 (function () {
   'use strict';
   var NS = 'http://www.w3.org/2000/svg';
-  var DATA = window.ELANGA_SIGNATURE;
+  var DEFAULT = window.ELANGA_SIGNATURE;
   var uid = 0;
   var runs = new WeakMap();
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -20,12 +20,14 @@
   /** Build the signature SVG inside `container`. */
   function mount(container, opts) {
     opts = opts || {};
+    var DATA = opts.data || DEFAULT;
+    var vb = DATA.viewBox.split(/\s+/).map(Number);
     var id = 'sigmask-' + (++uid);
     var svg = el('svg', {
       viewBox: DATA.viewBox, class: 'sig-svg', role: 'img',
       'aria-label': opts.label || 'Anthony Elanga'
     });
-    var mask = el('mask', { id: id, class: 'strokes', maskUnits: 'userSpaceOnUse', x: 0, y: 0, width: 1978, height: 660 });
+    var mask = el('mask', { id: id, class: 'strokes', maskUnits: 'userSpaceOnUse', x: vb[0] - 50, y: vb[1] - 50, width: vb[2] + 100, height: vb[3] + 100 });
     DATA.strokes.forEach(function (s) {
       mask.appendChild(el('path', {
         d: s[3], 'stroke-width': s[2], pathLength: 1,

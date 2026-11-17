@@ -15,8 +15,8 @@
 <script>
   (function () {
     var d = document.documentElement; d.classList.add('js');
-    var seen = null; try { seen = localStorage.getItem('elanga:intro-seen'); } catch (e) {}
-    if (!seen && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-on');
+    var seen = null; try { seen = sessionStorage.getItem('elanga:intro-v2'); } catch (e) {}
+    if (!seen || location.hash === '#intro') d.classList.add('intro-on');
   })();
 </script>
 </head>
@@ -25,7 +25,10 @@
 
 <!-- ===== 01 Arrival : intro ===== -->
 <div class="intro" id="intro" aria-hidden="true">
-  <div class="intro-sig"></div>
+  <div class="intro-stack">
+    <div class="intro-sig"></div>
+    <div class="intro-brand"></div>
+  </div>
   <button class="intro-skip" id="intro-skip" type="button">Passer l'intro</button>
 </div>
 
@@ -59,7 +62,7 @@
       <li><a href="motion.html">The Motion</a></li>
       <li><a href="partnerships.html">Partnerships</a></li>
     </ul>
-    <p class="menu-foot">Concept éditorial indépendant. Always forward.</p>
+    <div class="menu-foot"><nav class="social" aria-label="Réseaux et agence"><a href="https://www.instagram.com/elanga/" target="_blank" rel="noopener noreferrer">Instagram <b>@elanga</b><span class="sr-only"> (nouvel onglet)</span><svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5"/></svg></a><a href="https://www.instagram.com/panthera/" target="_blank" rel="noopener noreferrer">Agence <b>Panthera</b><span class="sr-only"> (nouvel onglet)</span><svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5"/></svg></a></nav><p>Concept éditorial indépendant. Always forward.</p></div>
   </div>
 </nav>
 
@@ -235,6 +238,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <span>© 2026 · Concept éditorial indépendant, non affilié à Anthony Elanga, à ses clubs ni à ses partenaires.</span>
+    <nav class="social" aria-label="Réseaux et agence"><a href="https://www.instagram.com/elanga/" target="_blank" rel="noopener noreferrer">Instagram <b>@elanga</b><span class="sr-only"> (nouvel onglet)</span><svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5"/></svg></a><a href="https://www.instagram.com/panthera/" target="_blank" rel="noopener noreferrer">Agence <b>Panthera</b><span class="sr-only"> (nouvel onglet)</span><svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5"/></svg></a></nav>
     <button type="button" data-replay-intro>Revoir l'intro</button>
   </div>
 </footer>
@@ -262,6 +266,7 @@
 <div class="grain" aria-hidden="true"></div>
 
 <script src="data/signature.js"></script>
+<script src="data/brand.js"></script>
 <script src="js/signature.js"></script>
 <script src="js/main.js"></script>
 </body>

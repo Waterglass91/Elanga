@@ -207,3 +207,10 @@ html:not(.js) .fig img{transform:none}
   .fact-row,.formats li{grid-template-columns:1fr;gap:4px}
   .kit-cover{max-width:320px}
 }
+
+/* ---------------- Representation (Panthera) ---------------- */
+.rep-lede{font-size:var(--fs-lede);font-weight:300;line-height:1.5;max-width:44ch}
+.rep-actions{margin:28px 0 14px;display:flex;flex-wrap:wrap;gap:12px}
+.btn .ext{width:11px;height:11px}
+.btn-line{border:1px solid var(--hair);color:var(--bone)}
+.btn-line:hover,.btn-line:focus-visible{border-color:var(--volt);color:var(--volt)}

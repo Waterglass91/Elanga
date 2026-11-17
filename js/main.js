@@ -8,12 +8,12 @@
   var root = document.documentElement;
   var body = document.body;
   var SIG = window.ElangaSignature;
-  var STORE_KEY = 'elanga:intro-seen';
+  var STORE_KEY = 'elanga:intro-v2';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   function store(set) {
-    try { if (set === undefined) return localStorage.getItem(STORE_KEY); if (set) localStorage.setItem(STORE_KEY, '1'); else localStorage.removeItem(STORE_KEY); }
+    try { if (set === undefined) return sessionStorage.getItem(STORE_KEY); if (set) sessionStorage.setItem(STORE_KEY, '1'); else sessionStorage.removeItem(STORE_KEY); }
     catch (e) { return null; }
   }
   function toTop() { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
@@ -29,6 +29,8 @@
     var introSig = intro.querySelector('.intro-sig');
     var brand = document.querySelector('.brand img');
     introSvg = SIG.mount(introSig, { label: 'Anthony Elanga' });
+    var brandBox = intro.querySelector('.intro-brand');
+    var brandSvg = (brandBox && window.ELANGA_BRAND) ? SIG.mount(brandBox, { data: window.ELANGA_BRAND, label: 'PrécisPasPressé' }) : null;
 
     var endIntro = function () {
       root.classList.remove('intro-on');
@@ -45,7 +47,9 @@
     leave = function (fast) {
       if (leaving) return;
       leaving = true;
+      clearTimeout(holdTimer);
       SIG.reveal(introSvg);
+      if (brandSvg) SIG.reveal(brandSvg);
       intro.classList.add('leaving');
       if (fast) { endIntro(); return; }
       var from = introSig.getBoundingClientRect();
@@ -60,19 +64,33 @@
       setTimeout(finish, 950);
     };
 
+    var HOLD_MS = 5000, holdTimer = 0, written = false;
+    var skipBtn = document.getElementById('intro-skip');
     var playIntro = function () {
+      clearTimeout(holdTimer);
+      written = false;
+      skipBtn.textContent = "Passer l'intro";
       root.classList.add('intro-on');
       body.classList.remove('is-ready');
       toTop();
-      SIG.write(introSvg, { lead: 250, speed: 1.45 }).then(function () {
-        if (root.classList.contains('intro-on')) setTimeout(function () { leave(false); }, 220);
+      /* the brand starts while the signature finishes, so the whole intro stays close to 3 s */
+      Promise.all([
+        SIG.write(introSvg, { lead: 250, speed: 1.45 }),
+        brandSvg ? SIG.write(brandSvg, { lead: 1250, speed: 2.1 }) : null
+      ]).then(function () {
+        if (!root.classList.contains('intro-on')) return;
+        /* hold the finished signature and brand on screen before entering the site */
+        written = true;
+        skipBtn.textContent = 'Entrer';
+        holdTimer = setTimeout(function () { leave(false); }, HOLD_MS);
       });
     };
 
-    document.getElementById('intro-skip').addEventListener('click', function () { leave(true); });
-    if (root.classList.contains('intro-on')) playIntro(); else { SIG.reveal(introSvg); ready(); }
+    /* during the writing : skip at once ; once written : enter with the logo flight */
+    skipBtn.addEventListener('click', function () { leave(!written); });
+    if (root.classList.contains('intro-on')) playIntro(); else { SIG.reveal(introSvg); if (brandSvg) SIG.reveal(brandSvg); ready(); }
     document.querySelectorAll('[data-replay-intro]').forEach(function (b) {
-      b.addEventListener('click', function () { store(false); SIG.stop(introSvg); playIntro(); });
+      b.addEventListener('click', function () { store(false); SIG.stop(introSvg); if (brandSvg) SIG.stop(brandSvg); playIntro(); });
     });
   } else {
     ready();

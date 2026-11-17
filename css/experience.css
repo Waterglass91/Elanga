@@ -8,7 +8,12 @@
 html.intro-on .intro{display:grid}
 .intro::before{content:"";position:absolute;inset:-20%;pointer-events:none;
   background:radial-gradient(50% 40% at 50% 50%,rgba(242,240,234,.06),transparent 70%);transition:opacity var(--t-med)}
+.intro-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(14px,3.2vh,36px)}
 .intro-sig{position:relative;width:min(80vw,1040px);transform-origin:0 0}
+.intro-brand{width:min(60vw,520px);transition:opacity 400ms ease}
+.intro.leaving .intro-brand{opacity:0}
+/* the header logo stays hidden until the flying signature lands on it */
+html.intro-on .brand{opacity:0}
 .intro-skip{position:absolute;right:var(--pad);bottom:28px;padding:8px 0;font-size:var(--fs-small);color:var(--titanium);
   transition:color var(--t-fast)}
 .intro-skip:hover{color:var(--bone)}
@@ -49,15 +54,15 @@ html.intro-on .intro{display:grid}
 .menu .wrap{width:100%}
 .menu ul{list-style:none}
 .menu li{overflow:hidden}
-.menu a,.menu .as-link{display:inline-block;font-family:var(--font-display);text-transform:uppercase;line-height:1.02;
+.menu li > a,.menu .as-link{display:inline-block;font-family:var(--font-display);text-transform:uppercase;line-height:1.02;
   font-size:clamp(44px,7vw,104px);text-decoration:none;color:var(--bone);
   transform:translateY(105%);transition:transform var(--t-slow) var(--ease),color var(--t-fast)}
-.menu.open a,.menu.open .as-link{transform:none}
+.menu.open li > a,.menu.open .as-link{transform:none}
 .menu li:nth-child(2) a{transition-delay:40ms}
 .menu li:nth-child(3) a{transition-delay:80ms}
 .menu li:nth-child(4) .as-link{transition-delay:120ms}
 .menu li:nth-child(5) a{transition-delay:160ms}
-.menu a:hover,.menu .as-link:hover,.menu a:focus-visible,.menu .as-link:focus-visible{color:var(--volt)}
+.menu li > a:hover,.menu .as-link:hover,.menu li > a:focus-visible,.menu .as-link:focus-visible{color:var(--volt)}
 .menu .soon{display:inline-block;margin-left:14px;vertical-align:middle;font-family:var(--font-body);font-size:12px;
   text-transform:none;color:var(--titanium);letter-spacing:.02em}
 .menu-foot{margin-top:clamp(32px,6vh,56px);color:var(--titanium);font-size:var(--fs-small)}
@@ -153,3 +158,13 @@ html.intro-on .intro{display:grid}
 @media (min-width:1600px){
   .brand{width:148px}
 }
+
+/* ---------- Social & agency links (footer, menu) ---------- */
+.social{display:flex;flex-wrap:wrap;gap:8px 24px}
+.social a{display:inline-flex;align-items:center;gap:6px;color:var(--titanium);text-decoration:none;transition:color var(--t-fast)}
+.social a b{font-weight:500;color:var(--bone)}
+.social a:hover,.social a:focus-visible{color:var(--volt)}
+.social a:hover b,.social a:focus-visible b{color:var(--volt)}
+.ext{width:10px;height:10px;flex:none;stroke:currentColor;stroke-width:1.4;fill:none}
+.menu-foot{display:flex;flex-wrap:wrap;gap:12px 40px;align-items:center;justify-content:space-between}
+.menu-foot .social{font-size:15px}
