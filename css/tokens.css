@@ -1,0 +1,54 @@
+/* ==========================================================
+   THE ELANGA EXPERIENCE — design tokens
+   Source : ELANGA_DESIGN_BRIEF.md (Design system)
+   ========================================================== */
+
+@font-face{
+  font-family:"Anton";
+  src:url("../fonts/anton-latin.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"Inter";
+  src:url("../fonts/inter-latin.woff2") format("woff2");
+  font-weight:100 900;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"Inter";
+  src:url("../fonts/inter-latin-italic.woff2") format("woff2");
+  font-weight:100 900;font-style:italic;font-display:swap;
+}
+
+:root{
+  /* Colour — 80 % dark, Volt ≈ 5 % */
+  --obsidian:#090A0C;     /* background */
+  --carbon:#202228;       /* surfaces */
+  --bone:#F2F0EA;         /* primary text, light sections */
+  --titanium:#ACB2BA;     /* muted text, details */
+  --volt:#B8FF36;         /* interactive states, progress, fine rules */
+  --hair:rgba(172,178,186,.18);
+  --scrim:rgba(9,10,12,.94);
+
+  /* Type */
+  --font-display:"Anton","Impact","Arial Narrow",sans-serif;
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fs-hero:clamp(56px,min(10vw,17vh),160px);   /* brief : desktop 90–160, mobile 44–72 */
+  --fs-h2:clamp(48px,6.4vw,112px);
+  --fs-h3:clamp(40px,4.6vw,80px);
+  --fs-lede:clamp(18px,1.5vw,22px);
+  --fs-body:16px;
+  --fs-small:13px;
+
+  /* Layout — 12 columns, max ≈ 1440 */
+  --max:1440px;
+  --pad:clamp(20px,4vw,64px);
+  --gutter:24px;
+  --header-h:72px;
+
+  /* Motion — 300–700 ms */
+  --t-fast:300ms;
+  --t-med:500ms;
+  --t-slow:700ms;
+  --ease:cubic-bezier(.7,0,.2,1);
+  --ease-out:cubic-bezier(.2,.7,.2,1);
+}

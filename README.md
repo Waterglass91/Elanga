@@ -1,39 +1,52 @@
-# Anthony Elanga — Always Forward
+# The Elanga Experience
 
-Site officiel d'Anthony Elanga. Direction artistique « The Elanga Experience » : luxe contemporain, performance sportive, univers cinématographique.
+Concept éditorial indépendant autour du parcours d'Anthony Elanga. Non affilié à Anthony Elanga, à ses clubs ni à ses partenaires tant qu'aucune autorisation n'a été donnée.
 
-## Contenu
+Cahier des charges : [`ELANGA_DESIGN_BRIEF.md`](ELANGA_DESIGN_BRIEF.md) · Audit : [`docs/M0-AUDIT.md`](docs/M0-AUDIT.md) · À valider : [`docs/EDITORIAL-CHECKLIST.md`](docs/EDITORIAL-CHECKLIST.md)
 
-| Fichier | Rôle |
+## Pages
+
+| Page | Contenu |
 |---|---|
-| `index.html` | Le site complet (HTML, CSS et JS dans un seul fichier) |
-| `media/` | Vidéo Manchester United, image d'attente, photos N&B des chapitres |
-| `assets/` | Signature vectorielle d'origine (noir et blanc) |
-| `tools/skeleton.py` | Script qui calcule le tracé du stylo à partir de la signature |
+| `index.html` | Experience : intro signature, hero, Statement, Motion, Journey (4 étapes), Person, Next chapter |
+| `journey.html` | Les 7 chapitres en format documentaire, rail de navigation, Milestones |
+| `person.html` | Racines, Mindset, Style, Héritage, Ambitions |
+| `motion.html` | Le film, Stills, Moments clés datés |
 
-## Parcours du site
+## Structure
 
-1. **Ouverture** : fond noir, la signature s'écrit à la main
-2. **Film** : « ALWAYS FORWARD. » et la vidéo encadrée, lancée avec le son au clic sur « Entrer »
-3. **Beyond the game** : manifeste
-4. **The journey** : 7 chapitres, de Malmö à la Coupe du monde 2026
-5. **The man** : racines, mindset, style, famille (photos à venir)
-6. **Milestones** : dates clés
-7. **Clôture** : la signature se réécrit, contact
+```
+css/tokens.css        couleurs, typographies, espacements, durées (brief)
+css/base.css          reset, grille, utilitaires
+css/experience.css    intro, en-tête, menu, hero, fenêtre du film
+css/home.css          sections de l'accueil, révélations
+css/pages.css         Journey, Person, Motion
+js/signature.js       moteur d'écriture de la signature
+js/main.js            comportements partagés par toutes les pages
+data/signature.js     géométrie de la signature + tracés du stylo
+fonts/                Anton, Inter (OFL, auto-hébergées)
+media/                vidéo, photos N&B, variantes WebP du hero
+tools/build_pages.py  génère les 4 pages HTML (en-tête, menu, pied de page communs)
+tools/skeleton.py     calcule les tracés du stylo à partir de la signature
+tools/build_signature_data.py  produit data/signature.js
+```
 
-## Palette
+Le contenu des pages se modifie dans `tools/build_pages.py`, puis :
 
-Obsidian `#0B0B0D` · Graphite `#202329` · Soft Ivory `#F4F1EB` · Steel Silver `#A8ADB7` · Champagne Gold `#C6A773`
+```
+python3 tools/build_pages.py
+```
 
-Typographies : Bebas Neue (titres), Inter (texte), signature manuscrite (logo).
+## Aperçu local
 
-## Mise en ligne
+```
+python3 -m http.server 8000
+# http://localhost:8000/
+```
 
-GitHub Pages : Settings → Pages → Deploy from a branch → `main` / `(root)`.
+Aucune dépendance, aucun build obligatoire. Tous les chemins sont relatifs : compatible GitHub Pages sous `/Elanga/`.
 
-## Avant publication
+## Design system
 
-- Droits des photos (photo 01 : © Corbis via Getty Images ; les autres proviennent de publications Instagram)
-- Adresse de contact partenariats / presse
-- Photos des blocs « The man »
-- Versions EN et SV (sélecteur présent, non actif)
+Obsidian `#090A0C` · Carbon `#202228` · Bone `#F2F0EA` · Titanium `#ACB2BA` · Volt `#B8FF36` (≈ 5 %)
+Anton (titres), Inter (texte), signature manuscrite (logo).
