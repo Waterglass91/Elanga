@@ -34,7 +34,7 @@
 
     var endIntro = function () {
       root.classList.remove('intro-on');
-      intro.classList.remove('leaving', 'held', 'eyes-on');
+      intro.classList.remove('leaving');
       introSig.classList.remove('fly');
       introSig.style.transform = '';
       leaving = false;
@@ -68,11 +68,6 @@
     var skipBtn = document.getElementById('intro-skip');
     var playIntro = function () {
       clearTimeout(holdTimer);
-      /* panther's eyes open in the dark first (skipped with reduced motion) */
-      intro.classList.remove('held', 'eyes-on');
-      void intro.offsetWidth;
-      if (!reduce) intro.classList.add('eyes-on');
-      var lead = reduce ? 250 : 1450;
       written = false;
       skipBtn.textContent = "Passer l'intro";
       root.classList.add('intro-on');
@@ -80,13 +75,12 @@
       toTop();
       /* the brand starts while the signature finishes, so the whole intro stays close to 3 s */
       Promise.all([
-        SIG.write(introSvg, { lead: lead, speed: 1.45 }),
-        brandSvg ? SIG.write(brandSvg, { lead: lead + 1000, speed: 2.1 }) : null
+        SIG.write(introSvg, { lead: 250, speed: 1.45 }),
+        brandSvg ? SIG.write(brandSvg, { lead: 1250, speed: 2.1 }) : null
       ]).then(function () {
         if (!root.classList.contains('intro-on')) return;
         /* hold the finished signature and brand on screen before entering the site */
         written = true;
-        intro.classList.add('held');                  /* the coat appears in the halo */
         skipBtn.textContent = 'Entrer';
         holdTimer = setTimeout(function () { leave(false); }, HOLD_MS);
       });

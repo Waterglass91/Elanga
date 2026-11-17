@@ -8,23 +8,6 @@
 html.intro-on .intro{display:grid}
 .intro::before{content:"";position:absolute;inset:-20%;pointer-events:none;
   background:radial-gradient(50% 40% at 50% 50%,rgba(242,240,234,.06),transparent 70%);transition:opacity var(--t-med)}
-/* ---------- Panther : eyes in the dark, then the coat in the halo ---------- */
-.intro-eyes{position:absolute;left:50%;top:45%;width:clamp(170px,15vw,250px);transform:translate(-50%,-50%);opacity:0;pointer-events:none}
-.intro-eyes .eye-glow{fill:var(--volt);opacity:.32;filter:url(#eye-blur)}
-.intro-eyes .pupil{fill:#060705}
-.intro-eyes .lid{transform-box:fill-box;transform-origin:50% 50%;transform:scaleY(.06)}
-.intro.eyes-on .intro-eyes{animation:eyes-fade 1.7s ease forwards}
-.intro.eyes-on .intro-eyes .lid{animation:eyes-lid 1.7s cubic-bezier(.3,.6,.3,1) forwards}
-@keyframes eyes-fade{0%,12%{opacity:0}34%{opacity:1}74%{opacity:1}100%{opacity:0}}
-@keyframes eyes-lid{0%,14%{transform:scaleY(.06)}34%{transform:scaleY(1)}52%{transform:scaleY(1)}56%{transform:scaleY(.06)}61%{transform:scaleY(1)}84%{transform:scaleY(1)}100%{transform:scaleY(.06)}}
-.intro-fur{position:absolute;inset:0;pointer-events:none;
-  background:url("../assets/panther-rosettes.svg") center / 230px 230px repeat,#17181d;
-  -webkit-mask-image:radial-gradient(46% 40% at 50% 50%,#000 0,rgba(0,0,0,.55) 45%,transparent 100%);
-  mask-image:radial-gradient(46% 40% at 50% 50%,#000 0,rgba(0,0,0,.55) 45%,transparent 100%);
-  opacity:0;transform:scale(1.06);transition:opacity 2600ms ease,transform 7s cubic-bezier(.2,.6,.2,1)}
-.intro.held .intro-fur{opacity:.7;transform:scale(1)}
-.intro.leaving .intro-fur{opacity:0;transition:opacity 400ms ease}
-@media (prefers-reduced-motion:reduce){.intro-eyes{display:none}}
 .intro-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(14px,3.2vh,36px)}
 .intro-sig{position:relative;width:min(80vw,1040px);transform-origin:0 0}
 .intro-brand{width:min(60vw,520px);transition:opacity 400ms ease}
