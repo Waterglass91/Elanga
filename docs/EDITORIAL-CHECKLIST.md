@@ -2,6 +2,8 @@
 
 Ce qui manque ou doit être validé avant toute mise en ligne publique. Mis à jour à chaque jalon.
 
+> **17 novembre 2026** : le client (Pierre) confirme que les droits d'image sont réglés et valide la mise en ligne de la nouvelle version. Les mentions ❌ « droits » ci-dessous sont levées sur sa déclaration ; les crédits photo restent affichés.
+
 ## Visuels
 
 | Emplacement | Visuel actuel | Statut |
