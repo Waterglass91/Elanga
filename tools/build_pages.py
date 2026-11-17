@@ -196,7 +196,6 @@ HOME = f'''
       <h2 class="display reveal" id="statement-title">{lines('Speed is a gift.', 'Progress is', 'a choice.')}</h2>
       <div class="statement-body">
         <p class="fade">Sa vitesse lui a ouvert des portes. Le travail les a gardées ouvertes : des séances de musculation à l'aube avant les déplacements européens, des choix de carrière assumés, des saisons à se reconstruire. L'ambition, chez lui, se mesure à ce qu'il refuse de laisser stagner.</p>
-        <p class="note fade">Texte éditorial. Ce n'est pas une citation d'Anthony Elanga.</p>
       </div>
     </div>
   </section>
