@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/experience.css">
 <link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/legacy.css">
+<link rel="stylesheet" href="css/pages.css">
 <script>
   (function () {
     var d = document.documentElement; d.classList.add('js');
@@ -20,7 +20,7 @@
   })();
 </script>
 </head>
-<body class="page-journey is-ready">
+<body class="page-journey">
 <a class="skip-link" href="#main">Aller au contenu</a>
 
 <!-- ===== Header ===== -->
@@ -31,8 +31,8 @@
   <div class="header-actions">
     <nav class="header-nav" aria-label="Navigation principale">
       <a href="journey.html" aria-current="page">Journey</a>
-      <a href="index.html#person">Person</a>
-      <a href="index.html#motion">Motion</a>
+      <a href="person.html">Person</a>
+      <a href="motion.html">Motion</a>
     </nav>
     <button class="header-film" type="button" data-open-film>Le film</button>
     <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
@@ -47,122 +47,103 @@
   <div class="wrap">
     <ul>
       <li><a href="index.html">Experience</a></li>
-      <li><a href="journey.html">The Journey</a></li>
-      <li><a href="index.html#person">The Person</a></li>
-      <li><a href="index.html#motion">The Motion</a></li>
+      <li><a href="journey.html" aria-current="page">The Journey</a></li>
+      <li><a href="person.html">The Person</a></li>
+      <li><a href="motion.html">The Motion</a></li>
       <li><span class="as-link is-soon" aria-disabled="true">Partnerships<span class="soon">bientôt</span></span></li>
     </ul>
     <p class="menu-foot">Concept éditorial indépendant. Always forward.</p>
   </div>
 </nav>
 
-<main id="main" class="legacy journey-page">
-  <header class="page-head wrap">
-    <p class="section-label">The Journey</p>
-    <h1 class="display reveal"><span class="ln"><span>De Malmö</span></span><span class="ln"><span>au monde.</span></span></h1>
-    <p class="page-lede">Sept chapitres, de Hyllie à Newcastle, en passant par Manchester, Nottingham et la Coupe du monde.</p>
-  </header>
-  <section id="parcours">
-    <div class="wrap">
-
-      <article class="sceneNone" id="chapitre-1">
-        <figure class="media"><img src="media/photo-01.jpg" width="640" height="800" alt="Anthony Elanga sous le maillot de la Suède" loading="lazy" decoding="async"><figcaption class="meta">Sous le maillot de la Suède. Photo © Corbis via Getty Images</figcaption></figure>
-        <div class="text">
-          <div class="scene-no"><b>01</b><span class="meta">2002 – 2014</span></div>
-          <h3 class="title">Malmö, les racines</h3>
-          <p>Anthony David Junior Elanga naît le 27 avril 2002 à Hyllie, à Malmö. Son père, Joseph, ancien défenseur international camerounais, a joué au Malmö FF. Avec sa mère, Daniella, il lui transmet le respect, le travail, l'humilité et la constance.</p>
-          <p>Formé à l'IF Elfsborg puis au Malmö FF, il se distingue par sa vitesse. Mais déjà, il veut comprendre comment devenir meilleur, et il étudie les plus grands, à commencer par Thierry Henry.</p>
-          <p class="moment">En 1998, son père disputait la Coupe du monde avec le Cameroun.</p>
+<main id="main" class="page">
+  <div class="wrap">
+    <header class="page-head">
+      <p class="section-label">The Journey</p>
+      <h1 class="display reveal"><span class="ln"><span>De Malmö</span></span><span class="ln"><span>au monde.</span></span></h1>
+      <p class="page-lede">Sept chapitres, de Hyllie à Newcastle, en passant par Manchester, Nottingham et la Coupe du monde.</p>
+    </header>
+    <div class="jr">
+      <nav class="rail" aria-label="Chapitres"><ol><li><a href="#chapitre-1"><span class="n">01</span><span class="t">Malmö</span><span class="y">2002 – 2014</span></a></li><li><a href="#chapitre-2"><span class="n">02</span><span class="t">Angleterre</span><span class="y">2014 – 2020</span></a></li><li><a href="#chapitre-3"><span class="n">03</span><span class="t">Manchester United</span><span class="y">2021 – 2023</span></a></li><li><a href="#chapitre-4"><span class="n">04</span><span class="t">Nottingham Forest</span><span class="y">2023 – 2025</span></a></li><li><a href="#chapitre-5"><span class="n">05</span><span class="t">Newcastle United</span><span class="y">2025 – 2026</span></a></li><li><a href="#chapitre-6"><span class="n">06</span><span class="t">Suède</span><span class="y">2022 – 2026</span></a></li><li><a href="#chapitre-7"><span class="n">07</span><span class="t">Next</span><span class="y">2026 –</span></a></li></ol></nav>
+      <div class="chapters">
+      <article class="chapter" id="chapitre-1" aria-labelledby="ch1-title">
+        <div class="ch-top"><span class="ch-n" aria-hidden="true">01</span><span class="ch-years">Chapitre 1 · 2002 – 2014</span></div>
+        <h2 class="display" id="ch1-title">Malmö, les racines</h2>
+        <p class="ch-lede">Avant la vitesse, il y a un environnement : une famille où le football de haut niveau est un métier.</p>
+        <div class="ch-body">
+          <div class="ch-text"><p>Anthony David Junior Elanga naît le 27 avril 2002 à Hyllie, un quartier de Malmö. Son père, Joseph Elanga, ancien défenseur international camerounais, a disputé la Coupe du monde 1998 en France et joué au Malmö FF. Avec sa mère, Daniella, il lui transmet le respect, le travail, l'humilité et la constance.</p><p>La famille vit à Malmö puis à Borås. Anthony découvre le football dans les structures suédoises, à l'IF Elfsborg puis au Malmö FF. Très tôt, il se distingue par sa vitesse et son explosivité, mais il cherche surtout à comprendre comment progresser : il observe les professionnels et étudie Thierry Henry, l'un de ses modèles.</p><p>Enfant, il croise même Zlatan Ibrahimović, alors coéquipier de son père à Malmö.</p><p class="moment">En 1998, son père disputait la Coupe du monde avec le Cameroun.</p></div>
+          <figure class="fig portrait"><div class="frame"><img src="media/photo-01.jpg" width="640" height="800" alt="Anthony Elanga sous le maillot de la Suède" loading="lazy" decoding="async"></div><figcaption>Avec la Suède. Photo © Corbis via Getty Images</figcaption></figure>
         </div>
       </article>
-
-      <article class="scene flip" id="chapitre-2">
-        <figure class="media"><img src="media/photo-02.jpg" width="688" height="860" alt="Anthony Elanga en pleine course, ballon au pied, avec la Suède" loading="lazy" decoding="async"><figcaption class="meta">En mouvement, avec la Suède</figcaption></figure>
-        <div class="text">
-          <div class="scene-no"><b>02</b><span class="meta">2014 – 2020</span></div>
-          <h3 class="title">Une nouvelle vie</h3>
-          <p>Vers 12 ans, sa famille s'installe dans la région de Manchester. Nouveau pays, nouvelle langue. Repéré au Hattersley FC, il intègre l'académie de Manchester United.</p>
-          <p>Il y progresse catégorie après catégorie, salué autant pour son sérieux que pour son talent, jusqu'au Jimmy Murphy Young Player of the Year en 2020.</p>
-          <p class="moment">Un enfant de Malmö devient l'un des meilleurs jeunes de l'académie la plus célèbre d'Angleterre.</p>
+      <article class="chapter alt" id="chapitre-2" aria-labelledby="ch2-title">
+        <div class="ch-top"><span class="ch-n" aria-hidden="true">02</span><span class="ch-years">Chapitre 2 · 2014 – 2020</span></div>
+        <h2 class="display" id="ch2-title">Une nouvelle vie</h2>
+        <p class="ch-lede">À douze ans, un nouveau pays, une nouvelle langue, et une porte qui s'ouvre : l'académie de Manchester United.</p>
+        <div class="ch-body">
+          <div class="ch-text"><p>Sa famille s'installe dans la région de Manchester. Il joue d'abord au Hattersley FC, un club local, où ses performances attirent vite l'attention. Manchester United le repère et l'intègre à son académie.</p><p>Il y progresse catégorie après catégorie : la technique, le physique, l'art d'exploiter sa vitesse. Ses éducateurs retiennent autant son sérieux et son comportement que son talent.</p><p>En 2019-2020, dans une saison interrompue par la pandémie, il marque sept buts en neuf matchs de championnat chez les moins de 18 ans et reçoit le Jimmy Murphy Young Player of the Year.</p><p class="moment">Le meilleur jeune joueur de l'académie, saison 2019-2020.</p></div>
+          <figure class="fig portrait"><div class="frame"><img src="media/photo-02.jpg" width="688" height="860" alt="Anthony Elanga en pleine course, ballon au pied, avec la Suède" loading="lazy" decoding="async"></div><figcaption>En mouvement, avec la Suède</figcaption></figure>
         </div>
       </article>
-
-      <article class="sceneNone" id="chapitre-3">
-        <figure class="media"><img src="media/bw-56.jpg" width="720" height="900" alt="Anthony Elanga de dos, maillot Elanga 56" loading="lazy" decoding="async"><figcaption class="meta">Manchester United</figcaption></figure>
-        <div class="text">
-          <div class="scene-no"><b>03</b><span class="meta">2021 – 2023</span></div>
-          <h3 class="title">Le très haut niveau</h3>
-          <p>Mai 2021 : premiers pas en équipe première, premier but en Premier League. Une blessure à l'épaule ? Il en profite pour se renforcer, quitte à être en salle dès quatre heures du matin avant un déplacement européen.</p>
-          <p>Février 2022, au Metropolitano : entré en jeu, il égalise face à l'Atlético de Madrid en Ligue des champions. Un mois plus tard, il porte pour la première fois le maillot de la Suède. En 2023, il choisit de partir pour jouer.</p>
-          <p class="moment">19 ans, un huitième de finale de Ligue des champions, un but.</p>
+      <article class="chapter" id="chapitre-3" aria-labelledby="ch3-title">
+        <div class="ch-top"><span class="ch-n" aria-hidden="true">03</span><span class="ch-years">Chapitre 3 · 2021 – 2023</span></div>
+        <h2 class="display" id="ch3-title">Le très haut niveau</h2>
+        <p class="ch-lede">Des débuts en Premier League, un soir européen à 19 ans, puis le choix difficile de partir.</p>
+        <div class="ch-body">
+          <div class="ch-text"><p>Le 11 mai 2021, Ole Gunnar Solskjær lui offre sa première apparition en équipe première, face à Leicester City. Le 23 mai, il marque son premier but en Premier League contre Wolverhampton.</p><p>Une blessure à l'épaule début 2021 aurait pu le freiner ; il en profite pour se renforcer. Lors de déplacements européens avec les équipes de jeunes, il lui arrive d'être en salle de musculation dès quatre heures du matin avant de prendre l'avion.</p><p>L'arrivée de Ralf Rangnick lui donne du temps de jeu. En février 2022, au Metropolitano, il entre en jeu et égalise face à l'Atlético de Madrid en huitième de finale de Ligue des champions. Un mois plus tard, il connaît sa première sélection avec la Suède. Avec l'arrivée d'Erik ten Hag et le renforcement offensif de l'effectif, ses occasions se raréfient : en 2023, il choisit de partir pour jouer.</p><p class="moment">19 ans, un huitième de finale de Ligue des champions, un but.</p></div>
+          <figure class="fig portrait"><div class="frame"><img src="media/bw-56.jpg" width="720" height="900" alt="Anthony Elanga de dos, maillot Elanga 56" loading="lazy" decoding="async"></div><figcaption>Manchester United</figcaption></figure>
         </div>
       </article>
-
-      <article class="scene flip" id="chapitre-4">
-        <figure class="media"><img src="media/photo-04.jpg" width="688" height="860" alt="Anthony Elanga sous les projecteurs du City Ground, maillot de Nottingham Forest" loading="lazy" decoding="async"><figcaption class="meta">City Ground, Nottingham Forest</figcaption></figure>
-        <div class="text">
-          <div class="scene-no"><b>04</b><span class="meta">2023 – 2025</span></div>
-          <h3 class="title">L'envol</h3>
-          <p>À Nottingham Forest, il trouve ce qui lui manquait : du temps de jeu et de la confiance. Sa vitesse devient une arme. En 2024-2025, il ne manque aucun match de Premier League.</p>
-          <p>Il marque face à Manchester United, son ancien club, au bout d'une course impressionnante. Forest retrouve l'Europe après trois décennies.</p>
-          <p class="moment">Le jeune espoir est devenu l'un des ailiers les plus rapides d'Angleterre.</p>
+      <article class="chapter alt" id="chapitre-4" aria-labelledby="ch4-title">
+        <div class="ch-top"><span class="ch-n" aria-hidden="true">04</span><span class="ch-years">Chapitre 4 · 2023 – 2025</span></div>
+        <h2 class="display" id="ch4-title">L'envol</h2>
+        <p class="ch-lede">Du temps de jeu, de la confiance, et un ailier qui devient une menace permanente.</p>
+        <div class="ch-body">
+          <div class="ch-text"><p>Le 25 juillet 2023, il rejoint Nottingham Forest pour un transfert estimé à 15 millions de livres. Dès sa première saison, il inscrit cinq buts et délivre neuf passes décisives en championnat.</p><p>En 2024-2025, il franchit un palier : présent sur les 38 matchs de Premier League, six buts, onze passes décisives. Le 1er février 2025, il délivre trois passes décisives dans la victoire 7-0 contre Brighton. Le 1er avril, il marque contre Manchester United, son ancien club, au bout d'une course impressionnante.</p><p>Forest termine septième et retrouve une qualification européenne après trois décennies d'absence.</p><p class="moment">Le jeune espoir est devenu l'un des ailiers les plus rapides d'Angleterre.</p></div>
+          <figure class="fig portrait"><div class="frame"><img src="media/photo-04.jpg" width="688" height="860" alt="Anthony Elanga sous les projecteurs du City Ground, maillot de Nottingham Forest" loading="lazy" decoding="async"></div><figcaption>City Ground, Nottingham Forest</figcaption></figure>
         </div>
       </article>
-
-      <article class="sceneNone" id="chapitre-5">
-        <figure class="media"><img src="media/photo-05.jpg" width="632" height="790" alt="Anthony Elanga, mains croisées sur le cœur, maillot de Newcastle United" loading="lazy" decoding="async"><figcaption class="meta">Newcastle United</figcaption></figure>
-        <div class="text">
-          <div class="scene-no"><b>05</b><span class="meta">2025 – 2026</span></div>
-          <h3 class="title">Changer de dimension</h3>
-          <p>Juillet 2025 : il rejoint Newcastle United. Les attentes changent : il ne s'agit plus de mériter sa place, mais de faire basculer les grands soirs.</p>
-          <p>Une première saison contrastée, et des réponses dans les grands matchs : un but contre Manchester City en demi-finale de Coupe de la Ligue, un doublé au Camp Nou en Ligue des champions. En décembre 2025, il devient père d'une petite fille, Blair.</p>
-          <p class="moment">Apprendre à vivre avec la pression, sans perdre confiance.</p>
+      <article class="chapter" id="chapitre-5" aria-labelledby="ch5-title">
+        <div class="ch-top"><span class="ch-n" aria-hidden="true">05</span><span class="ch-years">Chapitre 5 · 2025 – 2026</span></div>
+        <h2 class="display" id="ch5-title">Changer de dimension</h2>
+        <p class="ch-lede">Un transfert majeur, de nouvelles attentes, et l'apprentissage de la pression.</p>
+        <div class="ch-body">
+          <div class="ch-text"><p>Le 11 juillet 2025, il rejoint Newcastle United, entraîné par Eddie Howe, pour un transfert estimé à 55 millions de livres. Il ne s'agit plus de mériter sa place, mais de justifier un investissement et de faire basculer les grands matchs.</p><p>Sa première saison est contrastée. Mais il répond présent lors des grandes soirées : un but contre Manchester City en demi-finale retour de la Coupe de la Ligue en février 2026, puis un doublé au Camp Nou contre le FC Barcelone en Ligue des champions en mars.</p><p>En décembre 2025, il devient père d'une petite fille, Blair.</p><p class="moment">Apprendre à vivre avec la pression, sans perdre confiance.</p></div>
+          <figure class="fig portrait"><div class="frame"><img src="media/photo-05.jpg" width="632" height="790" alt="Anthony Elanga, mains croisées sur la poitrine, maillot de Newcastle United" loading="lazy" decoding="async"></div><figcaption>Newcastle United</figcaption></figure>
         </div>
       </article>
-
-      <article class="scene flip" id="chapitre-6">
-        <figure class="media"><img src="media/photo-06.jpg" width="654" height="817" alt="Anthony Elanga célèbre un but avec la Suède, main à l'oreille" loading="lazy" decoding="async"><figcaption class="meta">Avec la Suède</figcaption></figure>
-        <div class="text">
-          <div class="scene-no"><b>06</b><span class="meta">2022 – 2026</span></div>
-          <h3 class="title">Deux générations</h3>
-          <p>Né en Suède d'un père camerounais, formé en Angleterre, il choisit la Suède. En mars 2026, il marque en finale des barrages et l'envoie à la Coupe du monde.</p>
-          <p>En Amérique du Nord, il marque contre les Pays-Bas puis contre le Japon. Dans les tribunes, sa fille est soulevée dans les airs. Il doit détourner le regard pour ne pas pleurer.</p>
-          <p class="moment">Vingt-huit ans après son père, sa première Coupe du monde.</p>
+      <article class="chapter alt" id="chapitre-6" aria-labelledby="ch6-title">
+        <div class="ch-top"><span class="ch-n" aria-hidden="true">06</span><span class="ch-years">Chapitre 6 · 2022 – 2026</span></div>
+        <h2 class="display" id="ch6-title">Deux générations</h2>
+        <p class="ch-lede">Né en Suède d'un père camerounais, formé en Angleterre : il choisit la Suède.</p>
+        <div class="ch-body">
+          <div class="ch-text"><p>Il honore sa première sélection en mars 2022, à 19 ans. La Suède échoue à se qualifier pour la Coupe du monde au Qatar.</p><p>En mars 2026, il marque contre la Pologne en finale des barrages et contribue à envoyer son pays à la Coupe du monde. En Amérique du Nord, il débute contre la Tunisie, marque contre les Pays-Bas puis contre le Japon lors du dernier match de groupe. Après ce but, il aperçoit sa fille soulevée dans les tribunes, et doit détourner le regard pour ne pas pleurer.</p><p>La Suède est éliminée par la France en seizièmes de finale.</p><p class="moment">Vingt-huit ans après son père, sa première Coupe du monde.</p></div>
+          <figure class="fig portrait"><div class="frame"><img src="media/photo-06.jpg" width="654" height="817" alt="Anthony Elanga célèbre un but avec la Suède, main à l'oreille" loading="lazy" decoding="async"></div><figcaption>Avec la Suède</figcaption></figure>
         </div>
       </article>
-
-      <article class="sceneNone" id="chapitre-7">
-        <figure class="media"><img src="media/photo-07.jpg" width="627" height="783" alt="Anthony Elanga à l'entraînement, soulevé de terre en plein air" loading="lazy" decoding="async"><figcaption class="meta">Préparation</figcaption></figure>
-        <div class="text">
-          <div class="scene-no"><b>07</b><span class="meta">2026 –</span></div>
-          <h3 class="title">Devenir l'élite</h3>
-          <p>Ne pas rester prisonnier de ses erreurs, ni s'attarder sur ses réussites. Progresser chaque jour, se concentrer sur ce qui se maîtrise.</p>
-          <p>Pour lui, ce qui sépare un bon joueur d'un joueur d'élite tient aussi au mental. Pour 2026-2027, il porte le numéro 19, dont il garde la signification pour lui.</p>
-          <p class="moment">À 24 ans, son histoire est encore en train de s'écrire.</p>
+      <article class="chapter" id="chapitre-7" aria-labelledby="ch7-title">
+        <div class="ch-top"><span class="ch-n" aria-hidden="true">07</span><span class="ch-years">Chapitre 7 · 2026 –</span></div>
+        <h2 class="display" id="ch7-title">Devenir l'élite</h2>
+        <p class="ch-lede">Une leçon retenue : ne pas rester prisonnier de ses erreurs, ni s'attarder sur ses réussites.</p>
+        <div class="ch-body">
+          <div class="ch-text"><p>À l'été 2026, il revient sur sa première année à Newcastle avec du recul. Sa philosophie : progresser chaque jour et se concentrer sur ce qui se maîtrise.</p><p>Pour lui, ce qui sépare un bon joueur d'un joueur d'élite tient aussi au mental : réagir aux difficultés, prendre les bonnes décisions, garder confiance. Il lit et étudie les meilleurs sportifs pour comprendre leurs méthodes.</p><p>Pour la saison 2026-2027, il porte le numéro 19, dont il garde la signification pour lui.</p><p class="moment">À 24 ans, son histoire est encore en train de s'écrire.</p></div>
+          <figure class="fig portrait"><div class="frame"><img src="media/photo-07.jpg" width="627" height="783" alt="Anthony Elanga à l'entraînement, soulevé de terre en plein air" loading="lazy" decoding="async"></div><figcaption>Préparation</figcaption></figure>
         </div>
       </article>
+      </div>
     </div>
-  </section>
-  <section class="milestones">
-    <div class="wrap">
-      <h2 class="title">Milestones</h2>
-      <ol class="credits">
-        <li><span class="y">2002</span><span class="t">Naissance à Malmö, en Suède</span></li>
-        <li><span class="y">2014</span><span class="t">Installation en Angleterre, puis académie de Manchester United</span></li>
-        <li><span class="y">2020</span><span class="t">Meilleur jeune joueur de l'académie de Manchester United</span></li>
-        <li><span class="y">2021</span><span class="t">Débuts professionnels et premier but en Premier League</span></li>
-        <li><span class="y">2022</span><span class="t">But contre l'Atlético de Madrid et première sélection suédoise</span></li>
-        <li><span class="y">2023</span><span class="t">Nottingham Forest</span></li>
-        <li><span class="y">2025</span><span class="t">Newcastle United, et la naissance de sa fille</span></li>
-        <li><span class="y">2026</span><span class="t">Doublé au Camp Nou, première Coupe du monde, numéro 19</span></li>
-      </ol>
+  </div>
+
+  <section class="credits-sec" aria-labelledby="credits-title">
+    <div class="wrap grid">
+      <h2 class="display" id="credits-title">Milestones</h2>
+      <ol class="credits"><li><span class="y">2002</span><span class="t">Naissance à Malmö, en Suède</span></li><li><span class="y">2014</span><span class="t">Installation en Angleterre, puis académie de Manchester United</span></li><li><span class="y">2020</span><span class="t">Meilleur jeune joueur de l'académie de Manchester United</span></li><li><span class="y">2021</span><span class="t">Débuts professionnels et premier but en Premier League</span></li><li><span class="y">2022</span><span class="t">But contre l'Atlético de Madrid et première sélection suédoise</span></li><li><span class="y">2023</span><span class="t">Transfert à Nottingham Forest</span></li><li><span class="y">2025</span><span class="t">Saison à 17 contributions décisives en championnat, puis Newcastle United</span></li><li><span class="y">2026</span><span class="t">Doublé au Camp Nou, première Coupe du monde, numéro 19</span></li></ol>
     </div>
   </section>
 
-  <section class="page-end wrap">
-    <a class="btn btn-primary" href="index.html#person">Continuer : The Person</a>
-    <a class="link-btn" href="index.html">Retour à l'accueil</a>
-  </section>
+  <div class="wrap next-pages">
+    <a class="next-card" href="person.html"><span><span class="meta">Continuer</span><strong>The Person</strong></span><span class="go"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span></a>
+    <a class="next-card" href="motion.html"><span><span class="meta">Continuer</span><strong>The Motion</strong></span><span class="go"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span></a>
+  </div>
 </main>
 
 <footer class="site-footer">

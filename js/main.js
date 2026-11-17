@@ -81,11 +81,11 @@
   /* ---------------- Header : progress + solid background ---------------- */
   var header = document.querySelector('.site-header');
   var progress = document.querySelector('.progress');
-  var solidAfter = document.querySelector('.hero') ? 0.6 : 0.05;
+  var hasHero = !!document.querySelector('.hero');
   function onScroll() {
     var max = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
-    header.classList.toggle('solid', window.scrollY > window.innerHeight * solidAfter);
+    header.classList.toggle('solid', !hasHero || window.scrollY > window.innerHeight * 0.6);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -141,7 +141,7 @@
   });
 
   /* ---------------- Reversible reveals ---------------- */
-  var revealables = document.querySelectorAll('.reveal, .fade');
+  var revealables = document.querySelectorAll('.reveal, .fade, .fig');
   if ('IntersectionObserver' in window && !reduce) {
     var rio = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { en.target.classList.toggle('in', en.isIntersecting); });
@@ -193,6 +193,48 @@
       a.addEventListener('mousemove', function (e) { tx = e.clientX; ty = e.clientY; if (!raf) raf = requestAnimationFrame(loop); });
       a.addEventListener('mouseleave', function () { preview.classList.remove('on'); journeySec.classList.remove('previewing'); });
     });
+  }
+
+  /* ---------------- Journey page : active chapter in the rail ---------------- */
+  var railLinks = document.querySelectorAll('.rail a');
+  if (railLinks.length && 'IntersectionObserver' in window) {
+    var byId = {};
+    railLinks.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var setActive = function (id) {
+      railLinks.forEach(function (a) { a.removeAttribute('aria-current'); });
+      var a = byId[id]; if (!a) return;
+      a.setAttribute('aria-current', 'true');
+      var rail = a.closest('.rail');
+      if (rail.scrollWidth > rail.clientWidth) rail.scrollTo({ left: a.offsetLeft - 20, behavior: reduce ? 'auto' : 'smooth' });
+    };
+    var chapterIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target.id); });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('.chapter').forEach(function (ch) { chapterIO.observe(ch); });
+    setActive(location.hash ? location.hash.slice(1) : 'chapitre-1');
+  }
+
+  /* ---------------- Motion page : featured film ---------------- */
+  var fv = document.getElementById('feature-video');
+  if (fv) {
+    var fPlay = document.getElementById('feature-play');
+    var fSound = document.getElementById('feature-sound');
+    var fErr = fv.parentNode.querySelector('.film-error');
+    var load = function () { if (!fv.getAttribute('src')) fv.setAttribute('src', fv.dataset.src); };
+    var syncF = function () {
+      fSound.setAttribute('aria-pressed', String(!fv.muted));
+      fSound.querySelector('span').textContent = fv.muted ? 'Activer le son' : 'Son activé';
+      fPlay.textContent = fv.paused ? 'Lancer le film' : 'Pause';
+    };
+    fv.muted = true;
+    fPlay.addEventListener('click', function () {
+      load();
+      if (fv.paused) { var p = fv.play(); if (p && p.catch) p.catch(function () {}); } else fv.pause();
+    });
+    fSound.addEventListener('click', function () { load(); fv.muted = !fv.muted; if (fv.paused) fv.play(); syncF(); });
+    ['play', 'pause', 'volumechange'].forEach(function (ev) { fv.addEventListener(ev, syncF); });
+    fv.addEventListener('error', function () { fErr.hidden = false; });
+    fv.addEventListener('click', load, { once: true });
   }
 
   /* ---------------- Closing signature ---------------- */
