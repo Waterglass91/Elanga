@@ -1,0 +1,146 @@
+/* ==========================================================
+   M2 — Home narrative
+   02 Statement · 03 Motion · 04 Journey · 05 Person · 06 Next Chapter
+   ========================================================== */
+
+section[id]{scroll-margin-top:var(--header-h)}
+.section-label{display:flex;align-items:center;gap:14px;font-size:var(--fs-small);color:var(--titanium);letter-spacing:.02em}
+.section-label::before{content:"";width:28px;height:1px;background:currentColor}
+
+/* Header turns solid once the hero is behind us (needed over Bone sections) */
+.site-header.solid{background:rgba(9,10,12,.92);backdrop-filter:blur(8px)}
+
+/* ---------- Reversible text-mask reveal ---------- */
+.reveal .ln{display:block;overflow:hidden;padding:.14em 0 .04em;margin-top:-.14em}
+.reveal .ln > span{display:block;transition:transform var(--t-slow) var(--ease)}
+.js .reveal .ln > span{transform:translateY(105%)}
+.js .reveal.in .ln > span{transform:none}
+.reveal .ln:nth-child(2) > span{transition-delay:80ms}
+.reveal .ln:nth-child(3) > span{transition-delay:160ms}
+.reveal .ln:nth-child(4) > span{transition-delay:240ms}
+.fade{transition:opacity var(--t-slow) ease,transform var(--t-slow) var(--ease-out)}
+.js .fade{opacity:0;transform:translateY(16px)}
+.js .fade.in{opacity:1;transform:none}
+
+/* ---------- 02 Statement (abrupt shift to Bone) ---------- */
+.statement{background:var(--bone);color:var(--obsidian);padding:clamp(110px,18vh,200px) 0 clamp(96px,16vh,180px)}
+.statement .section-label{color:#5d636b}
+.statement h2{margin-top:clamp(28px,5vh,48px);font-size:clamp(52px,9.2vw,168px);line-height:.9}
+.statement-body{margin-top:clamp(40px,7vh,72px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gutter)}
+.statement-body p{grid-column:7/12;font-size:var(--fs-lede);line-height:1.55;font-weight:350;color:#2a2d33;max-width:46ch}
+.statement-body .note{grid-column:1/5;align-self:end;font-size:var(--fs-small);color:#5d636b}
+
+/* ---------- 03 Motion ---------- */
+.motion{padding:clamp(100px,16vh,180px) 0;border-bottom:1px solid var(--hair)}
+.motion-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gutter)}
+.motion-stage{grid-column:1/6;position:sticky;top:calc(var(--header-h) + 24px);align-self:start}
+.motion-stage .screen{position:relative;aspect-ratio:4/5;background:var(--carbon);overflow:hidden}
+.motion-stage video,.motion-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.motion-stage .bar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:14px}
+.link-btn{font-size:14px;color:var(--bone);text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:2px;transition:border-color var(--t-fast),color var(--t-fast)}
+.link-btn:hover{border-color:var(--volt);color:var(--volt)}
+.motion-text{grid-column:7/13;position:relative;padding-left:clamp(24px,3vw,48px)}
+.motion-text h2{margin-top:20px;font-size:var(--fs-h2)}
+.motion-text > p{margin-top:20px;color:var(--titanium);max-width:44ch}
+.motion-track{position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--hair)}
+.motion-track span{position:absolute;left:0;top:0;width:1px;height:100%;background:var(--volt);transform-origin:50% 0;transform:scaleY(0)}
+.beat{min-height:min(62vh,560px);display:flex;flex-direction:column;justify-content:center;padding:48px 0;border-top:1px solid var(--hair)}
+.beat:first-of-type{margin-top:clamp(48px,8vh,88px)}
+.beat .k{font-size:var(--fs-small);color:var(--titanium)}
+.beat h3{margin-top:10px;font-size:var(--fs-h3)}
+.beat p{margin-top:16px;max-width:42ch;color:rgba(242,240,234,.82)}
+
+/* ---------- 04 Journey teasers ---------- */
+.journey{position:relative;padding:clamp(100px,16vh,180px) 0}
+.journey-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.journey-top h2{margin-top:20px;font-size:var(--fs-h2)}
+.stops{list-style:none;margin-top:clamp(40px,7vh,72px);border-top:1px solid var(--hair)}
+.stop a{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,.9fr) 40px;gap:var(--gutter);align-items:center;
+  padding:clamp(22px,3.4vh,34px) 0;border-bottom:1px solid var(--hair);text-decoration:none;transition:color var(--t-fast)}
+.stop .yr{font-size:var(--fs-small);color:var(--titanium);font-variant-numeric:tabular-nums}
+.stop .place{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(40px,6vw,96px);line-height:.95;transition:transform var(--t-med) var(--ease)}
+.stop .what{color:var(--titanium);max-width:40ch;font-size:15px}
+.stop .go{justify-self:end;width:40px;height:40px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;
+  transition:border-color var(--t-fast),background-color var(--t-fast),color var(--t-fast)}
+.stop .go svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none}
+.stop .thumb{display:none}
+.stop a:focus-visible .place{transform:translateX(14px)}
+@media (hover:hover) and (pointer:fine){.stop a:hover .place{transform:translateX(14px)}}
+.stop a:hover .go,.stop a:focus-visible .go{border-color:var(--volt);background:var(--volt);color:var(--obsidian)}
+.journey-cta{margin-top:clamp(36px,6vh,56px)}
+.stop a{position:relative}
+.preview{position:fixed;left:0;top:0;z-index:0;width:clamp(240px,22vw,320px);aspect-ratio:4/5;pointer-events:none;overflow:hidden;
+  opacity:0;transform:translate(-50%,-50%) scale(.92);transition:opacity var(--t-fast) ease,transform var(--t-fast) var(--ease)}
+.preview.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.journey.previewing .stop .place,.journey.previewing .stop .what,.journey.previewing .stop .yr{mix-blend-mode:difference}
+.preview img{width:100%;height:100%;object-fit:cover}
+@media (hover:none),(pointer:coarse){
+  .preview{display:none}
+  .stop a{grid-template-columns:88px minmax(0,1fr);grid-template-areas:"thumb place" "thumb what" "thumb yr";row-gap:4px;column-gap:18px}
+  .stop .thumb{display:block;grid-area:thumb;align-self:start;width:88px;height:auto;aspect-ratio:4/5;object-fit:cover}
+  .stop .place{grid-area:place;font-size:clamp(34px,9vw,56px)}
+  .stop .what{grid-area:what}
+  .stop .yr{grid-area:yr}
+  .stop .go{display:none}
+}
+
+/* ---------- 05 Person (magazine on Bone) ---------- */
+.person{background:var(--bone);color:var(--obsidian);padding:clamp(100px,16vh,180px) 0}
+.person .section-label{color:#5d636b}
+.person-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gutter);align-items:end}
+.person-head > div{grid-column:1/8}
+.person-head h2{margin-top:20px;font-size:var(--fs-h2)}
+.person-head p{grid-column:8/13;color:#3a3e45;max-width:36ch;font-size:var(--fs-lede);line-height:1.5}
+.spread{margin-top:clamp(48px,8vh,96px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(32px,5vh,56px) var(--gutter)}
+.spread figure{margin:0}
+.spread figure img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.spread figcaption{margin-top:10px;font-size:var(--fs-small);color:#5d636b}
+.fig-a{grid-column:1/6;grid-row:1/3}
+.fig-b{grid-column:9/13;grid-row:3/5}
+.trait{border-top:1.5px solid var(--obsidian);padding-top:18px}
+.trait h3{font-size:clamp(34px,3.6vw,56px)}
+.trait p{margin-top:12px;color:#2a2d33;max-width:40ch}
+.t-roots{grid-column:7/12;grid-row:1}
+.t-mind{grid-column:7/12;grid-row:2;align-self:end}
+.t-style{grid-column:1/6;grid-row:3}
+.t-amb{grid-column:1/6;grid-row:4;align-self:end}
+
+/* ---------- 06 Next chapter ---------- */
+.next{padding:clamp(120px,20vh,220px) 0 clamp(64px,10vh,110px);text-align:left}
+.next h2{font-size:clamp(52px,9.2vw,168px);line-height:.9}
+.next h2 .ln:nth-child(2) > span{color:var(--titanium)}
+.next-sig{width:min(100%,820px);margin:clamp(64px,10vh,120px) 0 0 auto}
+.next-foot{margin-top:clamp(40px,7vh,72px);display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:center;
+  padding-top:28px;border-top:1px solid var(--hair)}
+.next-foot .kicker{font-size:clamp(20px,1.8vw,28px)}
+.next-links{display:flex;flex-wrap:wrap;gap:12px 28px;font-size:15px}
+.next-links a,.next-links button{color:var(--titanium);text-decoration:none;transition:color var(--t-fast)}
+.next-links a:hover,.next-links button:hover{color:var(--volt)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .statement-body p,.statement-body .note{grid-column:1/-1}
+  .statement-body .note{order:2}
+  .motion-stage,.motion-text{grid-column:1/-1;position:static}
+  .motion-text{margin-top:40px}
+  .beat{min-height:0;padding:36px 0}
+  .person-head > div,.person-head p{grid-column:1/-1}
+  .fig-a,.fig-b,.t-roots,.t-mind,.t-style,.t-amb{grid-column:1/-1;grid-row:auto}
+  .fig-b{grid-column:3/-1}
+}
+@media (max-width:900px) and (hover:hover) and (pointer:fine){
+  .stop a{grid-template-columns:72px minmax(0,1fr) 40px}
+  .stop .what{grid-column:2/3}
+}
+
+/* ---------- Menu : item not available yet ---------- */
+.menu .is-soon{cursor:default;color:var(--titanium)}
+.menu .is-soon:hover{color:var(--titanium)}
+.menu li:nth-child(4) a{transition-delay:120ms}
+
+/* ---------- Journey page (chapters kept from the previous version until M3) ---------- */
+.journey-page{padding-top:var(--header-h)}
+.page-head{padding-top:clamp(64px,12vh,140px);padding-bottom:clamp(48px,8vh,88px);border-bottom:1px solid var(--hair)}
+.page-head h1{margin-top:20px;font-size:var(--fs-h2)}
+.page-lede{margin-top:20px;max-width:46ch;color:var(--titanium);font-size:var(--fs-lede);line-height:1.5}
+.page-end{display:flex;flex-wrap:wrap;gap:20px 32px;align-items:center;padding-top:clamp(64px,10vh,120px);padding-bottom:clamp(64px,10vh,120px)}
