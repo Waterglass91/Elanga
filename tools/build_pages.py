@@ -28,6 +28,21 @@ def fig(name, alt, caption, cls='fig portrait'):
     return f'<figure class="{cls}"><div class="frame">{img(name, alt)}</div><figcaption>{caption}</figcaption></figure>'
 
 
+IG_PLAYER = 'https://www.instagram.com/elanga/'
+IG_AGENCY = 'https://www.instagram.com/panthera/'
+EXT = '<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5"/></svg>'
+
+
+def ext(href, label, cls=''):
+    c = f' class="{cls}"' if cls else ''
+    return (f'<a{c} href="{href}" target="_blank" rel="noopener noreferrer">{label}'
+            f'<span class="sr-only"> (nouvel onglet)</span>{EXT}</a>')
+
+
+SOCIAL = (f'<nav class="social" aria-label="Réseaux et agence">'
+          f'{ext(IG_PLAYER, "Instagram <b>@elanga</b>")}{ext(IG_AGENCY, "Agence <b>Panthera</b>")}</nav>')
+
+
 def lines(*parts):
     return ''.join(f'<span class="ln"><span>{p}</span></span>' for p in parts)
 
@@ -103,7 +118,7 @@ def chrome(current):
   <div class="wrap">
     <ul>{menu}
     </ul>
-    <p class="menu-foot">Concept éditorial indépendant. Always forward.</p>
+    <div class="menu-foot">{SOCIAL}<p>Concept éditorial indépendant. Always forward.</p></div>
   </div>
 </nav>
 '''
@@ -115,6 +130,7 @@ def footer(replay, scripts=''):
 <footer class="site-footer">
   <div class="wrap">
     <span>© 2026 · Concept éditorial indépendant, non affilié à Anthony Elanga, à ses clubs ni à ses partenaires.</span>
+    {SOCIAL}
     {extra}
   </div>
 </footer>
@@ -658,9 +674,21 @@ PARTNERS = f"""
       </div>
     </section>
 
+    <section class="pt-sec" id="representation" aria-labelledby="pt-rep">
+      <div class="pt-head"><p class="section-label">Représentation</p><h2 class="display" id="pt-rep">Panthera</h2></div>
+      <div class="rep">
+        <p class="rep-lede">Anthony Elanga est représenté par Panthera Sports, agence basée à Londres, depuis juillet 2025. Les demandes de partenariat, de presse et d'apparition passent par l'agence.</p>
+        <div class="rep-actions">
+          {ext(IG_AGENCY, 'Contacter Panthera sur Instagram', 'btn btn-primary')}
+          {ext(IG_PLAYER, 'Suivre Anthony Elanga', 'btn btn-line')}
+        </div>
+        <p class="meta">Sources : annonce de Panthera Sports (juillet 2025), presse spécialisée.</p>
+      </div>
+    </section>
+
     <section class="pt-sec" id="contact" aria-labelledby="pt-contact">
       <div class="pt-head"><p class="section-label">Contact</p><h2 class="display" id="pt-contact">Work together</h2>
-        <p class="pt-lede">Le contact du management sera ajouté après validation. En attendant, ce formulaire montre le parcours prévu : il n'envoie rien.</p></div>
+        <p class="pt-lede">Pour une demande professionnelle, passez par son agence, Panthera. Ce formulaire de démonstration montre le parcours prévu pour un contact direct : il n'envoie rien pour le moment.</p></div>
       <form class="pt-form" data-demo-form novalidate>
         {field('nom', 'Nom', extra=' autocomplete="name"')}
         {field('organisation', 'Organisation', extra=' autocomplete="organization"')}

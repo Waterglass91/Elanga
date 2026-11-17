@@ -37,6 +37,8 @@ Ce qui manque ou doit être validé avant toute mise en ligne publique. Mis à j
 
 ## Fonctionnel
 
+- Instagram du joueur (@elanga) et de son agence Panthera (@panthera) : liens en pied de page, dans le menu et sur Partnerships (fournis par le client le 17/11/2026)
+
 - Partnerships : chiffres d'audience, formats, media kit (PDF) et contact du management à fournir et valider
 - Formulaire de contact : démonstration sans envoi ; brancher un service (ou une adresse) une fois le contact approuvé
 - Motion : pas de filtres (une seule vidéo disponible), à ajouter quand la médiathèque le justifiera

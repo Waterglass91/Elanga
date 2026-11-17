@@ -136,7 +136,7 @@ section[id]{scroll-margin-top:var(--header-h)}
 /* ---------- Menu : item not available yet ---------- */
 .menu .is-soon{cursor:default;color:var(--titanium)}
 .menu .is-soon:hover{color:var(--titanium)}
-.menu li:nth-child(4) a{transition-delay:120ms}
+.menu li:nth-child(4) > a{transition-delay:120ms}
 
 /* ---------- Journey page (chapters kept from the previous version until M3) ---------- */
 .journey-page{padding-top:var(--header-h)}
