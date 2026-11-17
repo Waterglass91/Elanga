@@ -47,6 +47,7 @@
     leave = function (fast) {
       if (leaving) return;
       leaving = true;
+      clearTimeout(holdTimer);
       SIG.reveal(introSvg);
       if (brandSvg) SIG.reveal(brandSvg);
       intro.classList.add('leaving');
@@ -63,7 +64,12 @@
       setTimeout(finish, 950);
     };
 
+    var HOLD_MS = 5000, holdTimer = 0, written = false;
+    var skipBtn = document.getElementById('intro-skip');
     var playIntro = function () {
+      clearTimeout(holdTimer);
+      written = false;
+      skipBtn.textContent = "Passer l'intro";
       root.classList.add('intro-on');
       body.classList.remove('is-ready');
       toTop();
@@ -72,11 +78,16 @@
         SIG.write(introSvg, { lead: 250, speed: 1.45 }),
         brandSvg ? SIG.write(brandSvg, { lead: 1250, speed: 2.1 }) : null
       ]).then(function () {
-        if (root.classList.contains('intro-on')) setTimeout(function () { leave(false); }, 260);
+        if (!root.classList.contains('intro-on')) return;
+        /* hold the finished signature and brand on screen before entering the site */
+        written = true;
+        skipBtn.textContent = 'Entrer';
+        holdTimer = setTimeout(function () { leave(false); }, HOLD_MS);
       });
     };
 
-    document.getElementById('intro-skip').addEventListener('click', function () { leave(true); });
+    /* during the writing : skip at once ; once written : enter with the logo flight */
+    skipBtn.addEventListener('click', function () { leave(!written); });
     if (root.classList.contains('intro-on')) playIntro(); else { SIG.reveal(introSvg); if (brandSvg) SIG.reveal(brandSvg); ready(); }
     document.querySelectorAll('[data-replay-intro]').forEach(function (b) {
       b.addEventListener('click', function () { store(false); SIG.stop(introSvg); if (brandSvg) SIG.stop(brandSvg); playIntro(); });
