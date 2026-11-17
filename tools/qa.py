@@ -112,7 +112,7 @@ async def perf(b):
               new PerformanceObserver(l=>{for(const e of l.getEntries())window.__lcp=e.startTime}).observe({type:'largest-contentful-paint',buffered:true});
               new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)window.__cls+=e.value}).observe({type:'layout-shift',buffered:true});""")
             # skip the intro so we measure the page itself
-            await pg.add_init_script("try{localStorage.setItem('elanga:intro-seen','1')}catch(e){}")
+            await pg.add_init_script("try{localStorage.setItem('elanga:intro-v2','1')}catch(e){}")
             await pg.goto(BASE + p, wait_until='load'); await pg.wait_for_timeout(1500)
             m = await pg.evaluate("""(()=>{const r=performance.getEntriesByType('resource');const nav=performance.getEntriesByType('navigation')[0];
               const sum=f=>r.filter(f).reduce((a,e)=>a+(e.encodedBodySize||e.transferSize||0),0);
@@ -134,7 +134,7 @@ async def shots(b):
             ctx = await b.new_context(viewport={'width': w, 'height': h}); pg = await ctx.new_page()
             pg.on('pageerror', lambda e: errs.append(f'{p} {w}: {e}'))
             pg.on('console', lambda m: errs.append(f'{p} {w}: {m.text}') if m.type == 'error' else None)
-            await pg.add_init_script("try{localStorage.setItem('elanga:intro-seen','1')}catch(e){}")
+            await pg.add_init_script("try{localStorage.setItem('elanga:intro-v2','1')}catch(e){}")
             await pg.goto(BASE + p); await pg.wait_for_timeout(900)
             await pg.screenshot(path=f'{OUT}/{p[:-5]}_{w}.png')
             over = await pg.evaluate("document.documentElement.scrollWidth > innerWidth + 1")

@@ -34,7 +34,7 @@ def lines(*parts):
 
 # ------------------------------------------------------------------ shared chrome
 def head(title, desc, css, intro=False, body_class=''):
-    intro_js = ("var seen = null; try { seen = localStorage.getItem('elanga:intro-seen'); } catch (e) {}\n"
+    intro_js = ("var seen = null; try { seen = localStorage.getItem('elanga:intro-v2'); } catch (e) {}\n"
                 "    if (!seen && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-on');") if intro else ''
     links = '\n'.join(f'<link rel="stylesheet" href="css/{c}.css">' for c in ['tokens', 'base', 'experience', 'home'] + css)
     return f'''<!DOCTYPE html>

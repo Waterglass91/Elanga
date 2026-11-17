@@ -8,7 +8,7 @@
   var root = document.documentElement;
   var body = document.body;
   var SIG = window.ElangaSignature;
-  var STORE_KEY = 'elanga:intro-seen';
+  var STORE_KEY = 'elanga:intro-v2';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
